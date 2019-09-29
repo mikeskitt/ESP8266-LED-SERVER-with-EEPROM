@@ -8,7 +8,7 @@ Includes
   use of WIFI MULTI to allow use on different networks
   
 TO fix :
-  Change from WS2812FX library (poor effects)
+  Change from WS2812FX library (poor effects) - DONE now using FASTLED
   Improve webpage (add sliders for controls)
   build in other LED controls
   Add timer/ on off time
