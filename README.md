@@ -13,4 +13,4 @@ TO fix :
   build in other LED controls
   Add timer/ on off time
   
-Additional : Sync signal via HTTP POST added
+Additional : Sync signal via HTTP POST added. Sync to same effect across all servers.
