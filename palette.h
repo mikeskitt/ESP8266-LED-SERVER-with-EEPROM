@@ -88,19 +88,27 @@ const TProgmemRGBPalette16 SpForest_p FL_PROGMEM =
    CRGB::LightGreen, CRGB::LightGreen, CRGB::DarkGreen, CRGB::LightGrey, 
    CRGB::DarkGreen, CRGB::Orange, CRGB::DarkGreen, CRGB::Yellow, 
    CRGB::DarkGreen, CRGB::DarkGreen, CRGB::LightGreen , CRGB::LightGreen };
+
+// PurpleRain
+const TProgmemRGBPalette16 PurpRain_p FL_PROGMEM =
+{  CRGB::Purple, CRGB::BlueViolet, CRGB::DarkBlue, CRGB::Amethyst, 
+   CRGB::Indigo, CRGB::Navy, CRGB::Purple, CRGB::Indigo, 
+   CRGB::Purple, CRGB::BlueViolet, CRGB::DarkBlue, CRGB::Amethyst, 
+   CRGB::Indigo, CRGB::Navy, CRGB::Purple, CRGB::Indigo  };   
    
 const TProgmemRGBPalette16* ActivePaletteList[] = {
-  &Lemon_p,
-  &RetroC9_p,
-  &BlueWhite_p,
-  &RainbowColors_p,
-  &FairyLight_p,
-  &RedGreenWhite_p,
-  &PartyColors_p,
-  &FairyLight_p,
-  &Snow_p,
-  &RedWhite_p,
-  &Holly_p,
-  &Ice_p,
-  &SpForest_p  
+  &Lemon_p,  //0
+  &RetroC9_p, // 1
+  &BlueWhite_p,//2
+  &RainbowColors_p,//3
+  &FairyLight_p,//4
+  &RedGreenWhite_p,//5
+  &PartyColors_p,//6
+  &FairyLight_p,//7
+  &Snow_p,//8
+  &RedWhite_p,//9
+  &Holly_p,//10
+  &Ice_p,//11
+  &SpForest_p,//12
+  &PurpRain_p  //13
 };

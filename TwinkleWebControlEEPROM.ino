@@ -6,7 +6,10 @@
 #include <ESP8266WiFiMulti.h>
 #include <ESP8266WebServer.h>
 #include "Secret.h"
-//#include "RoomSpecific.h"
+
+
+#define CURRENT_ROOM 3  // ------------------Set this Sets IP address --------------
+#include "RoomSpecific.h"
 #include "Webpage.h"
 #include <EEPROM.h>
 
@@ -21,9 +24,8 @@ int lastPal;
 #define COLOR_ORDER   RGB
 #define DATA_PIN        4
 #define VOLTS          12
-#define MAX_MA       5000
+//#define MAX_MA       5000
 
-#define CURRENT_ROOM 1  // ------------------Set this Sets IP address --------------
 struct {
   uint8_t param1;
   uint8_t param2;
@@ -34,7 +36,7 @@ struct {
   uint8_t gVal;
   uint8_t bVal;
   } data;
-#include "RoomSpecific.h"
+
 unsigned long gHue = 0;
 unsigned long previousMillis = 0;
 const long interval = 10000; 
@@ -86,7 +88,9 @@ void parametres(){
  Serial.print("Effect = ");
  Serial.println(server.arg("effet"));
   
-data.lum = server.arg("Lum").toInt();
+if(server.arg("Lum")!=""){
+  data.lum = server.arg("Lum").toInt();
+}
 
 if(server.arg("speed")!="" ){
   twinkleSpeed = server.arg("speed").toInt();
@@ -132,7 +136,7 @@ server.send(200, "text/html", web_page);
 
 void setup() {//------------------------------------------SETUP-------------------------
   //delay( 3000 ); //safety startup delay
-FastLED.setMaxPowerInVoltsAndMilliamps( VOLTS, MAX_MA);
+FastLED.setMaxPowerInVoltsAndMilliamps( VOLTS, MILLI_AMPS);
 FastLED.addLeds<LED_TYPE,DATA_PIN,COLOR_ORDER>(leds, NUM_LEDS)
     .setCorrection(TypicalLEDStrip);
   Serial.begin(115200);
@@ -165,7 +169,7 @@ Serial.println(WiFi.localIP());
 server.on("/", handleRoot);
   
 server.on("/led", parametres);
-
+server.on("/led", HTTP_POST, parametres);
   
 server.begin();
   Serial.println("Server Up");
